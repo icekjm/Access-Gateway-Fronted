@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BringGaInfo, DbInfo, FnInfo, FormIdPass, loginReq, loginRes, SelectedFn, setModal } from './common/Frm';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify'; // react-toastify 모듈 import
-import SelectGaModal from '../../components/SelectGaModal/SelectGaModal';
+import SelectFnModal from '../../components/SelectFnModal/SelectFnModal';
 import TwoFactorAuth from '../../components/TwoFactorAuth/TwoFactorAuth';
 import SignupModal from '../../components/joinModal/SignupModal';
 import { initialModalState, modalReducer } from './FrmLogin.modalReducer';
@@ -56,7 +56,7 @@ const FrmLogin: React.FC = () => {
         
         const fetchData = async () => {
             try {
-                const res = await axiosJoinAccess.get<DbInfo<SelectedFn>>('/FrmLogin');
+                const res = await axiosJoinAccess.get<DbInfo<SelectedFn>>('/loginInfo');
                 setBringFnInfo(res.data);
             } catch(error) {
                 toast.error('데이터를 불러오는 중 오류가 발생하였습니다');
@@ -158,7 +158,7 @@ const FrmLogin: React.FC = () => {
     const goingBackInt = async (e: React.MouseEvent<HTMLButtonElement>): Promise<void> => {
         
         try {
-            const res = await axiosJoinAccess.get('/FrmIntro');
+            const res = await axiosJoinAccess.delete('/session');
         } catch(error) {
             toast.error('뒤로가기 중 오류가 발생하였습니다');
         }
@@ -240,10 +240,10 @@ const FrmLogin: React.FC = () => {
             </div>
 
             {modalState.goingBackModal.isOpen && (
-                <SelectGaModal
+                <SelectFnModal
                     onConfirm={goingBackInt}
                     onCancel={() => dispatch({ type: 'CLOSE_MODAL', payload: 'goingBackModal' })}
-                    selectGaModal={modalState.goingBackModal}
+                    selectFnModal={modalState.goingBackModal}
                     dispatch={dispatch}
                     message="기능 선택화면으로 이동하시겠습니까?"
                 />

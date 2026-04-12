@@ -68,12 +68,12 @@ const ChooseFn: React.FC = () => {
             movePage: !prev.movePage,
         }));
 
-        const fnInfo: FnInfoReq = {} as FnInfoReq;
-        fnInfo.fnNo = fnNo;
-        fnInfo.fnNm = fnNm;
+        //const fnInfo: FnInfoReq = {} as FnInfoReq;
+        //fnInfo.fnNo = fnNo;
+        //fnInfo.fnNm = fnNm;
 
         try {
-            const res = await axiosJoinAccess.post<ChosenFnInfo<SelectedFn>>('/selectFnInfo', fnInfo);
+            const res = await axiosJoinAccess.get<ChosenFnInfo<SelectedFn>>(`/functions/${fnNo}`);
             setMoveData((prev) => ({ ...prev, transferData: res.data }));
         } catch (error) {
             toast.error('데이터를 불러오는 중 오류가 발생하였습니다');
@@ -104,7 +104,7 @@ const ChooseFn: React.FC = () => {
     useLayoutEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axiosJoinAccess.get<FnInfo<FnList>>('/selectFnList');
+                const res = await axiosJoinAccess.get<FnInfo<FnList>>('/functions');
                 setFnList(res.data);
             } catch (error) {
                 toast.error('데이터를 불러오는 중 오류가 발생하였습니다');

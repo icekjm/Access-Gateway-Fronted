@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { axiosJoinAccess } from '../../utils/axiosInstance';
+import { axiosBoard} from '../../utils/axiosInstance';
 import { BoardWriteReq, BoardWriteRes } from './common/Board';
 import styles from './ApprovalBoardWrite.module.css';
 
@@ -51,7 +51,7 @@ const ApprovalBoardWrite: React.FC = () => {
         if (!validate()) return;
 
         try {
-            await axiosJoinAccess.post<BoardWriteRes>('/board/insertBoardPost', form);
+            await axiosBoard.post<BoardWriteRes>('/board/insertBoardPost', form);
             toast.success('게시글이 등록되었습니다.');
             navigate('/board/ApprovalBoard');
         } catch {

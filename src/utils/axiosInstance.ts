@@ -14,6 +14,14 @@ export const axiosJoinAccess = axios.create({
     },
 });
 
+export const axiosBoard = axios.create({
+    baseURL: process.env.REACT_APP_BOARD_BASE_URL,
+    timeout: 5000,
+    headers: {
+        'Content-Type': 'application/json',
+    }
+})
+
 export const axiosTwofa = axios.create({
     baseURL: process.env.REACT_APP_AUTH_BASE_URL,
     timeout: 5000,

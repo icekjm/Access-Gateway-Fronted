@@ -11,7 +11,7 @@ import {
 } from './common/Board';
 import styles from './ApprovalBoard.module.css';
 import { initialModalState, modalReducer } from '../frm/FrmLogin.modalReducer';
-import SelectGaModal from '../../components/SelectGaModal/SelectGaModal';
+import SelectFnModal from '../../components/SelectFnModal/SelectFnModal';
 
 const PAGE_SIZE = 10;
 
@@ -140,7 +140,7 @@ const ApprovalBoard: React.FC = () => {
     const goingBackInt = async (e: React.MouseEvent<HTMLButtonElement>): Promise<void> => {
         
         try {
-            const res = await axiosJoinAccess.get('/FrmIntro');
+            const res = await axiosJoinAccess.delete('/session');
         } catch(error) {
             toast.error('뒤로가기 중 오류가 발생하였습니다');
         }
@@ -307,10 +307,10 @@ const ApprovalBoard: React.FC = () => {
             </div>
 
             {modalState.goingBackModal.isOpen && (
-                <SelectGaModal
+                <SelectFnModal
                     onConfirm={goingBackInt}
                     onCancel={() => dispatch({ type: 'CLOSE_MODAL', payload: 'goingBackModal' })}
-                    selectGaModal={modalState.goingBackModal}
+                    selectFnModal={modalState.goingBackModal}
                     dispatch={dispatch}
                     message="기능 선택화면으로 이동하시겠습니까?"
                 />
