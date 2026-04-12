@@ -1,0 +1,114 @@
+.pageWrap {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #0d1b4b 0%, #0a2a6e 40%, #0d3580 60%, #1a1a6e 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: '맑은 고딕', '돋움';
+    position: relative;
+    overflow: hidden;
+}
+
+/* 배경 격자 패턴 */
+.pageWrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(100, 160, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 160, 255, 0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+/* 상단 로고 */
+.logoWrap {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 40px;
+}
+
+.logoImg {
+    height: 48px;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+}
+
+/* 중앙 기능 이미지 카드 */
+.fnCard {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.fnImgWrap {
+    padding: 28px 40px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1.5px solid rgba(91, 163, 255, 0.3);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    backdrop-filter: blur(4px);
+}
+
+.fnImgWrap:hover {
+    background: rgba(91, 163, 255, 0.12);
+    border-color: rgba(91, 163, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+.fnImg {
+    width: 200px;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 0 32px rgba(59, 130, 246, 0.35), 0 0 8px rgba(59, 130, 246, 0.2);
+}
+
+.hint {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 13px;
+    letter-spacing: 0.3px;
+}
+
+/* 자동 이동 프로그레스 바 */
+.progressWrap {
+    position: relative;
+    z-index: 1;
+    margin-top: 40px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.progressLabel {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+}
+
+.progressBar {
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: #5ba3ff;
+    border-radius: 2px;
+    animation: countdown 5s linear forwards;
+}
+
+@keyframes countdown {
+    from { width: 100%; }
+    to   { width: 0%; }
+}

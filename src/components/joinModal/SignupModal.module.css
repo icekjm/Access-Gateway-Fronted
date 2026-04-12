@@ -1,0 +1,136 @@
+/* SignupModal.module.css */
+
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeOut 0.3s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.modalOverlay.show {
+    animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.closeButton {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.4);
+    transition: color 0.2s;
+}
+
+.closeButton:hover {
+    color: #ffffff;
+}
+
+.modalContent {
+    position: relative;
+    background: #0f1f5c;
+    border: 1.5px solid rgba(91, 163, 255, 0.3);
+    padding: 30px 28px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
+}
+
+.modalTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+/*회원가입 항목레이블 왼쪽 정렬 */
+.modalOverlay form label {
+    text-align: left;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+    margin-bottom: 4px;
+}
+
+.input {
+    height: 44px;
+    padding: 0 12px;
+    border: 1.5px solid rgba(91, 163, 255, 0.3);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.07);
+    color: #ffffff;
+    font-family: '맑은 고딕', '돋움';
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    box-sizing: border-box;
+}
+
+.input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.input:focus {
+    border-color: #5ba3ff;
+    background: rgba(255, 255, 255, 0.11);
+}
+
+.submitButton {
+    padding: 12px;
+    background: #3a7bd5;
+    color: white;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: '맑은 고딕', '돋움';
+    transition: background 0.2s;
+}
+
+.submitButton:hover:not(:disabled) {
+    background: #2f6bbf;
+}
+
+/*접근권한버튼 비활성화*/
+.submitButton:disabled {
+    background: rgba(58, 123, 213, 0.35);
+    color: rgba(255, 255, 255, 0.4);
+    cursor: not-allowed;
+}

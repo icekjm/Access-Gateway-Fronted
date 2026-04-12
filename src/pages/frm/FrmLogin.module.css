@@ -1,0 +1,208 @@
+.pageWrap {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #0d1b4b 0%, #0a2a6e 40%, #0d3580 60%, #1a1a6e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: '맑은 고딕', '돋움';
+    position: relative;
+    overflow: hidden;
+}
+
+/* 배경 격자 패턴 */
+.pageWrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(100, 160, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 160, 255, 0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+/* 뒤로가기 버튼 */
+.backBtn {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: 10;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.backBtn:hover {
+    opacity: 1;
+}
+
+/* 우측 상단 로고 */
+.logoWrap {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    z-index: 10;
+}
+
+.logoImg {
+    height: 36px;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+}
+
+/* 로그인 카드 */
+.card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 380px;
+    padding: 40px 36px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid rgba(91, 163, 255, 0.25);
+    border-radius: 16px;
+    backdrop-filter: blur(6px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+/* 상단 로고 */
+.logoWrap {
+    margin-bottom: 8px;
+}
+
+.logoImg {
+    height: 36px;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+}
+
+/* 서비스 이미지 */
+.serviceImgWrap {
+    margin-bottom: 28px;
+}
+
+.serviceImg {
+    width: 160px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 24px;
+    box-shadow: 0 0 32px rgba(59, 130, 246, 0.35), 0 0 8px rgba(59, 130, 246, 0.2);
+}
+
+/* 폼 */
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.inputWrap {
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1.5px solid rgba(91, 163, 255, 0.3);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: '맑은 고딕', '돋움';
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.input:focus {
+    border-color: #5ba3ff;
+    background: rgba(255, 255, 255, 0.11);
+}
+
+/* 아이디/패스워드 찾기 */
+.findRow {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin-top: -4px;
+}
+
+.findLink {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.findLink:hover {
+    color: #5ba3ff;
+}
+
+.findSep {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 12px;
+}
+
+/* 버튼 영역 */
+.btnWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.loginBtn {
+    width: 100%;
+    height: 48px;
+    background: #3a7bd5;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: '맑은 고딕', '돋움';
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.loginBtn:hover:not(:disabled) {
+    background: #2f6bbf;
+}
+
+.loginBtn:disabled {
+    background: rgba(58, 123, 213, 0.35);
+    cursor: not-allowed;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.joinBtn {
+    width: 100%;
+    height: 48px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1.5px solid rgba(91, 163, 255, 0.3);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: '맑은 고딕', '돋움';
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.joinBtn:hover {
+    border-color: #5ba3ff;
+    color: #5ba3ff;
+}

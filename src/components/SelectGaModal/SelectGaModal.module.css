@@ -1,0 +1,106 @@
+/* 모달창 설정*/
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6); /* 어두운 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    animation: fadeOut 0.3s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.modal-overlay.show {
+    animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: #0f1f5c;
+    border: 1.5px solid rgba(91, 163, 255, 0.3);
+    padding: 28px 24px;
+    border-radius: 16px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(6px);
+}
+
+.modal-message {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.modal-confirm-btn,
+.modal-cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 45%;
+    font-family: '맑은 고딕', '돋움';
+    transition: background 0.2s, opacity 0.2s;
+}
+
+.modal-confirm-btn {
+    background: #3a7bd5;
+    color: white;
+}
+
+.modal-confirm-btn:hover {
+    background: #2f6bbf;
+}
+
+.modal-cancel-btn {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1.5px solid rgba(91, 163, 255, 0.3);
+}
+
+.modal-cancel-btn:hover {
+    border-color: #5ba3ff;
+    color: #5ba3ff;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 300px;
+    }
+
+    .modal-confirm-btn,
+    .modal-cancel-btn {
+        width: 48%;
+    }
+}

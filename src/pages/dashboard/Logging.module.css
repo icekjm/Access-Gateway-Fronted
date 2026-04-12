@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f8f9fa;
+    color: #334155;
+}
+
+.dashboardLayout {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+/* --- Page Header --- */
+.pageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #5950e5;
+    color: #e2e8f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pageTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.userControls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+}
+
+.userIcon {
+    width: 18px;
+    height: 18px;
+    margin-right: 0.4rem;
+    color: #cbd5e1;
+}
+
+.userName {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.logoutButton {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.logoutButton:hover {
+    background-color: #c82333;
+}
+
+/* --- Tab Navigation --- */
+.tabNavContainer {
+    position: relative; /* 화살표 위치의 기준점 */
+}
+
+.tabNav {
+    background-color: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* 내부 스크롤바 숨김 */
+}
+
+.tabList {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0 2rem; /* 화살표 공간 확보 */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.tabList::-webkit-scrollbar {
+    display: none;
+}
+
+.tabButton {
+    background-color: transparent;
+    border: none;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #64748b;
+    transition: color 0.2s ease, border-bottom 0.2s ease;
+    white-space: nowrap;
+}
+
+.tabButton:hover {
+    color: #1e293b;
+}
+
+.tabButton.activeTab {
+    color: #38bdf8;
+    border-bottom: 3px solid #38bdf8;
+}
+
+/* --- Scroll Arrows --- */
+/* .scrollArrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    color: #334155;
+    transition: opacity 0.2s ease;
+}
+
+.scrollArrow:hover {
+    color: #1e293b;
+}
+
+.scrollArrow.left {
+    left: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
+}
+
+.scrollArrow.right {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
+}
+
+.scrollArrow svg {
+    width: 24px;
+    height: 24px;
+} */
+
+/* --- Content Area --- */
+.mainContent {
+    flex-grow: 1;
+    padding: 2rem 3rem;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+}
+
+.contentArea {
+    margin-bottom: 2.5rem;
+}
+
+.contentTitle {
+    margin: 0 0 0.5rem 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.contentDescription {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.1rem;
+    color: #64748b;
+}
+
+/*파일목록*/
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* --파일목록 세로 스크롤바 설정-- */
+.fileList {
+    max-height: 45vh;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+.fileList::-webkit-scrollbar {
+    width: 8px;
+}
+.fileList::-webkit-scrollbar-track {
+    background: rgb(228, 226, 226);
+}
+.fileList::-webkit-scrollbar-thumb {
+    background: rgb(193, 192, 192);
+    border-radius: 4px;
+}
+
+.fileInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fileListItem .fileSize {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eef2f7;
+    transition: background-color 0.2s ease;
+}
+
+.fileListItem:last-child {
+    border-bottom: none;
+}
+
+.fileListItem:hover {
+    background-color: #f8f9fa;
+}
+
+.emptyMessage {
+    text-align: center;
+    padding: 3rem;
+    color: #94a3b8;
+    font-size: 1.1rem;
+}
+
+/* .logContent {
+    background-color: #1e293b;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-height: 45vh;
+    overflow-y: auto;
+} */
+
+/**********************여기부터 로그 콘솔창****************************/
+.fixedLogSection {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* .logContent::-webkit-scrollbar {
+    width: 8px;
+}
+.logContent::-webkit-scrollbar-track {
+    background: #334155;
+}
+.logContent::-webkit-scrollbar-thumb {
+    background-color: #64748b;
+    border-radius: 4px;
+} */
+
+/*새로 추가한 로그콘솔창 디자인*/
+/* 로그 컨테이너 스타일 */
+.logContainer {
+    background-color: #1e293b;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    padding: 0.5rem;
+    max-height: 45vh;
+    overflow-y: auto;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+}
+
+.logContainer::-webkit-scrollbar {
+    width: 8px;
+}
+.logContainer::-webkit-scrollbar-track {
+    background: #334155;
+}
+.logContainer::-webkit-scrollbar-thumb {
+    background-color: #64748b;
+    border-radius: 4px;
+}
+
+/* 로그 한 줄 스타일 */
+.logLine {
+    padding: 2px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logLine:last-child {
+    border-bottom: none;
+}
+
+/* 상태 표시 뱃지 */
+.status {
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.connected {
+    background-color: #16a34a; /* 녹색 */
+    color: #fff;
+}
+
+.error {
+    background-color: #dc2626; /* 빨강 */
+    color: #fff;
+}
+
+.reconnecting {
+    background-color: #facc15; /* 노랑 */
+    color: #000;
+}
+
+/* --- 반응형 디자인 --- */
+@media (max-width: 768px) {
+    .pageHeader {
+        padding: 1rem 1.5rem;
+        gap: 1rem;
+    }
+
+    .pageTitle {
+        font-size: 1.3rem;
+    }
+
+    .mainContent {
+        padding: 1.5rem 1rem;
+    }
+
+    .contentTitle {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pageHeader {
+        padding: 0.8rem 1rem; /* 패딩 축소 */
+        flex-wrap: nowrap; /* 줄바꿈 방지 */
+        gap: 0.5rem; /* 요소 간 간격 최소화 */
+    }
+
+    .pageTitle {
+        font-size: 1.1rem; /* 타이틀 폰트 크기 축소 */
+        white-space: nowrap; /* 타이틀 줄바꿈 방지 */
+    }
+
+    /* .userControls {
+       
+    } */
+
+    .userName {
+        font-size: 0.8rem; /* 사용자 이름 폰트 축소 */
+    }
+
+    .logoutButton {
+        font-size: 0.75rem; /* 로그아웃 버튼 폰트 축소 */
+        padding: 0.3rem 0.6rem; /* 버튼 패딩 축소 */
+    }
+}

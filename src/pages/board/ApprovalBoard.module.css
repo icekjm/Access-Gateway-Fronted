@@ -1,0 +1,281 @@
+.wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    background: #f5f6fa;
+    min-height: 100vh;
+    font-family: '맑은 고딕', '돋움';
+}
+
+/* 제목 영역 */
+.titleRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #3498db;
+}
+
+.backBtn {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.pageTitle {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+}
+
+/* 검색 영역 */
+.searchArea {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    background: #fff;
+    padding: 14px 16px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.searchDropdown {
+    height: 34px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #333;
+    background: #fff;
+    cursor: pointer;
+    min-width: 90px;
+}
+
+.searchDropdown:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.searchInput {
+    flex: 1;
+    height: 34px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #333;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.searchBtn {
+    height: 34px;
+    padding: 0 18px;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.searchBtn:hover {
+    background: #2980b9;
+}
+
+/* 버튼 영역 */
+.actionArea {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.btnNew {
+    height: 32px;
+    padding: 0 16px;
+    background: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btnNew:hover {
+    background: #219150;
+}
+
+.btnEdit {
+    height: 32px;
+    padding: 0 16px;
+    background: #f39c12;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btnEdit:hover {
+    background: #d68910;
+}
+
+.btnDelete {
+    height: 32px;
+    padding: 0 16px;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btnDelete:hover {
+    background: #c0392b;
+}
+
+.btnDisabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* 테이블 */
+.tableWrap {
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.table thead tr {
+    background: #ecf0f1;
+}
+
+.table thead th {
+    padding: 12px 10px;
+    text-align: center;
+    font-weight: 700;
+    color: #2c3e50;
+    border-bottom: 1px solid #dde;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.15s;
+}
+
+.table tbody tr:hover {
+    background: #f8f9ff;
+}
+
+.table tbody td {
+    padding: 11px 10px;
+    text-align: center;
+    color: #444;
+    vertical-align: middle;
+}
+
+.tdTitle {
+    text-align: left !important;
+    cursor: pointer;
+    color: #2c3e50;
+}
+
+.tdTitle:hover {
+    text-decoration: underline;
+    color: #3498db;
+}
+
+.tdCheckbox {
+    width: 40px;
+}
+
+.noData {
+    text-align: center;
+    padding: 40px 0;
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* 신청상태 뱃지 */
+.statusBadge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.statusPending {
+    background: #fef9e7;
+    color: #d4ac0d;
+    border: 1px solid #f9e79f;
+}
+
+.statusApproved {
+    background: #eafaf1;
+    color: #1e8449;
+    border: 1px solid #a9dfbf;
+}
+
+.statusRejected {
+    background: #fdedec;
+    color: #c0392b;
+    border: 1px solid #f5b7b1;
+}
+
+/* 페이지네이션 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin-top: 20px;
+}
+
+.pageBtn {
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.pageBtn:hover:not(.pageBtnActive):not(.pageBtnDisabled) {
+    background: #f0f4ff;
+    border-color: #3498db;
+    color: #3498db;
+}
+
+.pageBtnActive {
+    background: #3498db;
+    border-color: #3498db;
+    color: #fff;
+    font-weight: 700;
+    cursor: default;
+}
+
+.pageBtnDisabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
