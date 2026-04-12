@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { setModal } from '../../pages/frm/common/Frm';
 import { ModalAction } from '../../pages/frm/FrmLogin.modalReducer';
-import styles from './SelectGaModal.module.css';
+import styles from './SelectFnModal.module.css';
 
 //버튼과 관련된 기본 Props
 interface buttonProps {
@@ -12,11 +12,11 @@ interface buttonProps {
 
 interface selectGaProps extends buttonProps {
     message: string;
-    selectGaModal: setModal;
+    selectFnModal: setModal;
     dispatch: React.Dispatch<ModalAction>;
 }
 
-const SelectGaModal: React.FC<selectGaProps> = ({ onConfirm, onCancel, message, selectGaModal, dispatch }) => {
+const SelectFnModal: React.FC<selectGaProps> = ({ onConfirm, onCancel, message, selectFnModal, dispatch }) => {
     const chgCssShow = (e: React.MouseEvent<HTMLButtonElement>) => {
         dispatch({ type: 'ANIMATE_CLOSE_MODAL', payload: 'goingBackModal' });
 
@@ -26,7 +26,7 @@ const SelectGaModal: React.FC<selectGaProps> = ({ onConfirm, onCancel, message, 
     };
 
     return (
-        <div className={`${styles['modal-overlay']} ${selectGaModal.cssAddShow ? styles['show'] : ''}`}>
+        <div className={`${styles['modal-overlay']} ${selectFnModal.cssAddShow ? styles['show'] : ''}`}>
             <div className={`${styles['modal-content']}`}>
                 <p className={`${styles['modal-message']}`}>{message}</p>
                 <div className={`${styles['modal-buttons']}`}>
@@ -42,4 +42,4 @@ const SelectGaModal: React.FC<selectGaProps> = ({ onConfirm, onCancel, message, 
     );
 };
 
-export default SelectGaModal;
+export default SelectFnModal;
