@@ -8,7 +8,7 @@ export type ChosenFnInfo<T> = {
 }
 
 export type FnList = {
-    fnNo: string;
+    fnNo: number;
     fnNm: string;
 };
 

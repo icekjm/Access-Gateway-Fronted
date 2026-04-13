@@ -61,7 +61,7 @@ const ChooseFn: React.FC = () => {
     };
 
     // FN 클릭
-    const fnSelect = async (e: React.MouseEvent<HTMLDivElement>, fnNm: string, fnNo: string): Promise<void> => {
+    const fnSelect = async (e: React.MouseEvent<HTMLDivElement>, fnNm: string, fnNo: number): Promise<void> => {
         setMoveData((prev) => ({
             ...prev,
             inputValue: fnNm.toUpperCase(),
