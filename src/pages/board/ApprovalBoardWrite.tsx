@@ -1,11 +1,13 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { axiosBoard} from '../../utils/axiosInstance';
+import { axiosBoard, axiosJoinAccess } from '../../utils/axiosInstance';
 import { BoardWriteReq, BoardWriteRes } from './common/Board';
 import styles from './ApprovalBoardWrite.module.css';
+import { FnInfo, FnList } from '../frm/common/Frm';
 
 type FormErrors = {
+    fnNo: string;
     title: string;
     content: string;
 };
@@ -13,27 +15,57 @@ type FormErrors = {
 const ApprovalBoardWrite: React.FC = () => {
     const navigate = useNavigate();
 
+    const [fnList, setFnList] = useState<FnInfo<FnList>>({ FnInfo: []});
+
     const [form, setForm] = useState<BoardWriteReq>({
+        fnNo: null,
         title: '',
         content: '',
     });
 
     const [errors, setErrors] = useState<FormErrors>({
+        fnNo: '',
         title: '',
         content: '',
     });
 
+    useEffect(() => {
+        const fetchFnList = async () => {
+            try {
+                const res = await axiosJoinAccess.get<FnInfo<FnList>>('/functions');
+                
+                //fn_no가 2인것은 제외
+                const filteredData = res.data.FnInfo.filter(each => each.fnNo !== 2);
+                console.log(filteredData);
+
+                setFnList({FnInfo: filteredData});
+            } catch {
+                toast.error('기능 목록을 불러오는 중 오류가 발생하였습니다.');
+            }
+        };
+        fetchFnList();
+    }, []);
+
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setForm((prev) => ({ ...prev, [name]: value }));
-        // 입력 시 해당 필드 에러 초기화
         setErrors((prev) => ({ ...prev, [name]: '' }));
     };
 
+    const handleFnChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        const value = e.target.value;
+        setForm((prev) => ({ ...prev, fnNo: value ? Number(value) : null }));
+        setErrors((prev) => ({ ...prev, fnNo: '' }));
+    };
+
     const validate = (): boolean => {
-        const newErrors: FormErrors = { title: '', content: '' };
+        const newErrors: FormErrors = { fnNo: '', title: '', content: '' };
         let valid = true;
 
+        if (!form.fnNo) {
+            newErrors.fnNo = '문의 내용을 선택해주세요.';
+            valid = false;
+        }
         if (form.title.trim() === '') {
             newErrors.title = '제목을 입력해주세요.';
             valid = false;
@@ -51,7 +83,11 @@ const ApprovalBoardWrite: React.FC = () => {
         if (!validate()) return;
 
         try {
-            await axiosBoard.post<BoardWriteRes>('/board/insertBoardPost', form);
+             //임시처리
+            // alert(sessionStorage.getItem("userId"));
+            // return;
+
+            await axiosBoard.post<BoardWriteRes>('/board/posts', form);
             toast.success('게시글이 등록되었습니다.');
             navigate('/board/ApprovalBoard');
         } catch {
@@ -70,6 +106,24 @@ const ApprovalBoardWrite: React.FC = () => {
             <div className={styles.formCard}>
                 <table className={styles.formTable}>
                     <tbody>
+                        <tr>
+                            <th>문의내용</th>
+                            <td>
+                                <select
+                                    className={`${styles.select} ${errors.fnNo ? styles.error : ''}`}
+                                    value={form.fnNo ?? ''}
+                                    onChange={handleFnChange}
+                                >
+                                    <option value="">서비스를 선택하세요.</option>
+                                    {fnList.FnInfo.map((fn) => (
+                                        <option key={fn.fnNo} value={fn.fnNo}>
+                                            {fn.fnNm}
+                                        </option>
+                                    ))}
+                                </select>
+                                {errors.fnNo && <div className={styles.errorMsg}>{errors.fnNo}</div>}
+                            </td>
+                        </tr>
                         <tr>
                             <th>제목</th>
                             <td>

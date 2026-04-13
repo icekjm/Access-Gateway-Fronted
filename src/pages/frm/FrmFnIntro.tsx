@@ -12,8 +12,6 @@ const FrmFnIntro = () => {
     const transferData = (locationUse.state as { transferData: ChosenFnInfo<SelectedFn> })
         .transferData as ChosenFnInfo<SelectedFn>;
 
-    console.log(transferData);
-
     //이미지경로 가져오기
     const imagePath: string = process.env.REACT_APP_IMG_PROJECT + 'common/';
 
