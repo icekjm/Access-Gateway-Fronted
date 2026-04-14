@@ -29,12 +29,8 @@ export const SEARCH_TYPE_LABEL: Record<SearchType, string> = {
     writer: '작성자',
 };
 
-// export type FnInfo = {
-//     fnNo: number;
-//     fnNm: string;
-// };
-
 export type BoardWriteReq = {
+    userId: string;
     fnNo: number | null;
     title: string;
     content: string;
@@ -42,4 +38,5 @@ export type BoardWriteReq = {
 
 export type BoardWriteRes = {
     postNo: number;
+    createdAt: string;
 };

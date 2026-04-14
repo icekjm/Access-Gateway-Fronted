@@ -42,7 +42,7 @@ const ApprovalBoard: React.FC = () => {
                 page,
                 pageSize: PAGE_SIZE,
             };
-            const res = await axiosJoinAccess.post<BoardListRes>('/board/selectBoardList', req);
+            const res = await axiosJoinAccess.get<BoardListRes>('/posts', { params: req });
             setPostList(res.data.postList);
             setTotalPages(res.data.totalPages || 1);
             setSelectedNos([]);

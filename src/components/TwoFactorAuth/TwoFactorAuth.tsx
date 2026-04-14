@@ -157,7 +157,7 @@ const TwoFactorAuth: React.FC<twoFactorProps> = ({ onCancel, twoFactorModal, use
                     //로컬스토리지에 발급받은 토큰을 셋팅
                     localStorage.setItem('accessToken', accessToken);
                     localStorage.setItem('refreshToken', refreshToken);
-
+                    localStorage.setItem('userId', userId);
                     console.log('저장 후 accessToken', localStorage.getItem('accessToken'));
                     console.log('저장 후 refreshToken', localStorage.getItem('refreshToken'));
 

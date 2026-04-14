@@ -18,6 +18,7 @@ const ApprovalBoardWrite: React.FC = () => {
     const [fnList, setFnList] = useState<FnInfo<FnList>>({ FnInfo: []});
 
     const [form, setForm] = useState<BoardWriteReq>({
+        userId: '',
         fnNo: null,
         title: '',
         content: '',
@@ -30,8 +31,14 @@ const ApprovalBoardWrite: React.FC = () => {
     });
 
     useEffect(() => {
+
         const fetchFnList = async () => {
             try {
+                
+                //로컬스토리지에서
+                const userId = localStorage.getItem('userId') ?? '';
+                setForm((prev) => ({...prev, userId}));
+
                 const res = await axiosJoinAccess.get<FnInfo<FnList>>('/functions');
                 
                 //fn_no가 2인것은 제외
@@ -83,12 +90,12 @@ const ApprovalBoardWrite: React.FC = () => {
         if (!validate()) return;
 
         try {
-             //임시처리
-            // alert(sessionStorage.getItem("userId"));
-            // return;
 
-            await axiosBoard.post<BoardWriteRes>('/board/posts', form);
+            const res = await axiosBoard.post<BoardWriteRes>('/posts', form);
+            
             toast.success('게시글이 등록되었습니다.');
+            toast.info('생성날짜 : ' + res.data.createdAt);
+            
             navigate('/board/ApprovalBoard');
         } catch {
             toast.error('게시글 등록 중 오류가 발생하였습니다.');

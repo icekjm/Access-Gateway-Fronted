@@ -111,7 +111,7 @@ const SignupModal: React.FC<joinProps> = ({ onCancel, joinModal, dispatch }) => 
             const res = await axiosAuthJoinAccess.post<AccessFormResponse>('/cloudJoinAccess', payload);
             console.log(res.data.userId);
             console.log(res.data.createdAt);
-            sessionStorage.setItem("userId", res.data.userId);
+            localStorage.setItem("userId", res.data.userId);
             toast.info('접근권한 신청이 완료되었으며 현재 신청대기중입니다');
             //모달창닫기
             dispatch({ type: 'CLOSE_MODAL', payload: 'joinModal' });
