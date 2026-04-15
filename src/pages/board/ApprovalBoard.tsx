@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, ChangeEvent, KeyboardEvent, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { axiosJoinAccess } from '../../utils/axiosInstance';
+import { axiosBoard, axiosJoinAccess } from '../../utils/axiosInstance';
 import {
     BoardPost,
     BoardListRes,
@@ -42,7 +42,8 @@ const ApprovalBoard: React.FC = () => {
                 page,
                 pageSize: PAGE_SIZE,
             };
-            const res = await axiosJoinAccess.get<BoardListRes>('/posts', { params: req });
+            const res = await axiosBoard.get<BoardListRes>('/posts', { params: req });
+            console.log(res.data.postList);
             setPostList(res.data.postList);
             setTotalPages(res.data.totalPages || 1);
             setSelectedNos([]);
@@ -147,6 +148,17 @@ const ApprovalBoard: React.FC = () => {
         
         window.location.href = '/';
     };
+
+    //날짜포맷함수
+    const formatDate = (dateStr: string) => {
+        const date = new Date(dateStr);
+        const yyyy = date.getFullYear();
+        const MM = String(date.getMonth() + 1).padStart(2, '0');
+        const dd = String(date.getDate()).padStart(2, '0');
+        const HH = String(date.getHours()).padStart(2, '0');
+        const mm = String(date.getMinutes()).padStart(2, '0');
+        return `${yyyy}-${MM}-${dd} ${HH}:${mm}`;
+    }
 
     return (
         <div className={styles.wrap}>
@@ -253,7 +265,7 @@ const ApprovalBoard: React.FC = () => {
                                         {post.title}
                                     </td>
                                     <td>{post.writer}</td>
-                                    <td>{post.regDt}</td>
+                                    <td>{post.regDt ? formatDate(post.regDt) : ''}</td>
                                 </tr>
                             ))
                         )}
