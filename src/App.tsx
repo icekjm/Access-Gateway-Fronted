@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import LoggingDashboard from './pages/dashboard/LoggingDashboard';
 import ApprovalBoard from './pages/board/ApprovalBoard';
 import ApprovalBoardWrite from './pages/board/ApprovalBoardWrite';
+import ApprovalBoardDetail from './pages/board/ApprovalBoardDetail';
 
 import './assets/styles/commonJM.css';
 import './assets/styles/stylesheetJM.css';
@@ -26,6 +27,7 @@ const App: React.FC = () => {
                 <Route path="/dashboard/LoggingDashboard" element={<LoggingDashboard />} />
                 <Route path="/board/ApprovalBoard" element={<ApprovalBoard />} />
                 <Route path="/board/ApprovalBoardWrite" element={<ApprovalBoardWrite />} />
+                <Route path="/board/ApprovalBoardDetail" element={<ApprovalBoardDetail/>} />
             </Routes>
 
             {/* ToastContainer를 추가 */}

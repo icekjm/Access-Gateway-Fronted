@@ -67,7 +67,7 @@ const SignupModal: React.FC<joinProps> = ({ onCancel, joinModal, dispatch }) => 
         userPhone: '',
         emailAddress: '',
         role: 'USER',
-        applyStatus: '0'
+        applyStatus: 'WAITING'
     });
 
     //에러상태관리

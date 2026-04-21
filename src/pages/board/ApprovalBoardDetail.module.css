@@ -1,0 +1,141 @@
+.wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    background: #f5f6fa;
+    min-height: 100vh;
+    font-family: '맑은 고딕', '돋움';
+}
+
+.pageTitle {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #3498db;
+}
+
+.formCard {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.formTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.formTable tr {
+    border-bottom: 1px solid #eee;
+}
+
+.formTable tr:last-child {
+    border-bottom: none;
+}
+
+.formTable th {
+    width: 120px;
+    padding: 14px 16px;
+    background: #f8f9fa;
+    color: #555;
+    font-weight: 700;
+    text-align: left;
+    vertical-align: top;
+    border-right: 1px solid #eee;
+    white-space: nowrap;
+}
+
+.formTable td {
+    padding: 12px 14px;
+    vertical-align: middle;
+    color: #333;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.contentCell {
+    min-height: 200px;
+    vertical-align: top;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.statusBadge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.statusPending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.statusApproved {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.statusRejected {
+    background: #f8d7da;
+    color: #842029;
+}
+
+/* 버튼 영역 */
+.btnArea {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.btnList {
+    height: 34px;
+    padding: 0 20px;
+    background: #95a5a6;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btnList:hover {
+    background: #7f8c8d;
+}
+
+.btnEdit {
+    height: 34px;
+    padding: 0 20px;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btnEdit:hover {
+    background: #2980b9;
+}
+
+.btnDelete {
+    height: 34px;
+    padding: 0 20px;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btnDelete:hover {
+    background: #c0392b;
+}
