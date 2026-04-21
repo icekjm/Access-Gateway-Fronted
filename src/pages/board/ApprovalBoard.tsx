@@ -92,7 +92,7 @@ const ApprovalBoard: React.FC = () => {
             toast.warning('수정할 게시글을 1건만 선택해주세요.');
             return;
         }
-        navigate('/board/ApprovalBoardWrite', { state: { postNo: selectedNos[0], mode: 'edit' } });
+        navigate('/board/ApprovalBoardDetail', { state: { postNo: selectedNos[0] } });
     };
 
     // 삭제
@@ -120,6 +120,7 @@ const ApprovalBoard: React.FC = () => {
         let cls = styles.statusPending;
         if (statusCd === 'APPROVED') cls = styles.statusApproved;
         else if (statusCd === 'REJECTED') cls = styles.statusRejected;
+        else if (statusCd === 'WAITING') cls = styles.statusPending;
         return <span className={`${styles.statusBadge} ${cls}`}>{statusNm}</span>;
     };
 
@@ -257,7 +258,7 @@ const ApprovalBoard: React.FC = () => {
                                         />
                                     </td>
                                     <td>{post.fnNm}</td>
-                                    <td>{renderStatusBadge(post.statusNm, post.statusCd)}</td>
+                                    <td>{renderStatusBadge(post.applyStatusNm, post.applyStatus)}</td>
                                     <td
                                         className={styles.tdTitle}
                                         onClick={() => handleRowClick(post.postNo)}

@@ -1,8 +1,8 @@
 export type BoardPost = {
     postNo: number;
     fnNm: string;
-    statusCd: string;
-    statusNm: string;
+    applyStatus: string;
+    applyStatusNm: string;
     title: string;
     writer: string;
     regDt: string;
