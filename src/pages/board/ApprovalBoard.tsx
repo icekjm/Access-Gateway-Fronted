@@ -120,7 +120,7 @@ const ApprovalBoard: React.FC = () => {
         let cls = styles.statusPending;
         if (statusCd === 'APPROVED') cls = styles.statusApproved;
         else if (statusCd === 'REJECTED') cls = styles.statusRejected;
-        else if (statusCd === 'WAITING') cls = styles.statusPending;
+        // else if (statusCd === 'WAITING') cls = styles.statusPending;
         return <span className={`${styles.statusBadge} ${cls}`}>{statusNm}</span>;
     };
 
