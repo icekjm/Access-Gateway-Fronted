@@ -1,51 +1,55 @@
-import React, { useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation, Navigate } from 'react-router-dom';
 import styles from './ApprovalBoardDetail.module.css';
 import { axiosBoard } from '../../utils/axiosInstance';
 
 type DetailData = {
     postNo: number;
     fnNm: string;
-    statusCd: string;
-    statusNm: string;
+    applyStatus: string;
+    applyStatusNm: string;
     title: string;
     content: string;
-    writer: string;
+    userId: string;
     regDt: string;
 };
 
 const ApprovalBoardDetail: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { postNo } = location.state as { postNo: number };
 
-    // TODO: postNo로 상세 데이터 조회 로직 추가
-    const detail: DetailData = {
-        postNo,
+    const state = location.state as { postNo: number } | null;
+    const postNo = state?.postNo ?? null;
+
+    const [detail, setDetail] = useState<DetailData>({
+        postNo: postNo ?? 0,
         fnNm: '',
-        statusCd: '',
-        statusNm: '',
+        applyStatus: '',
+        applyStatusNm: '',
         title: '',
         content: '',
-        writer: '',
-        regDt: '',
-    };
+        userId: '',
+        regDt: ''    
+    });
 
     useEffect(() => {
+        if (!postNo) return;
 
-        const fetchDetail = async() => {
+        const fetchDetail = async () => {
+            const res = await axiosBoard.get<DetailData>(`/posts/${postNo}`);
+            setDetail(res.data);
+        };
 
-            const res = await axiosBoard.get<DetailData>('/posts', {params: postNo})
-            console.log(res.data);
+        fetchDetail();
+    }, [postNo]);
 
-        }
-
-    })
+    if (!postNo) return <Navigate to="/board/ApprovalBoard" replace />;
 
     const renderStatusBadge = (statusNm: string, statusCd: string) => {
         let cls = styles.statusPending;
         if (statusCd === 'APPROVED') cls = styles.statusApproved;
         else if (statusCd === 'REJECTED') cls = styles.statusRejected;
+        // else if (statusCd === 'WAITING') cls = styles.statusPending;
         return <span className={`${styles.statusBadge} ${cls}`}>{statusNm}</span>;
     };
 
@@ -74,11 +78,11 @@ const ApprovalBoardDetail: React.FC = () => {
                         </tr>
                         <tr>
                             <th>신청상태</th>
-                            <td>{renderStatusBadge(detail.statusNm, detail.statusCd)}</td>
+                            <td>{renderStatusBadge(detail.applyStatusNm, detail.applyStatus)}</td>
                         </tr>
                         <tr>
                             <th>작성자</th>
-                            <td>{detail.writer}</td>
+                            <td>{detail.userId}</td>
                         </tr>
                         <tr>
                             <th>작성일자</th>

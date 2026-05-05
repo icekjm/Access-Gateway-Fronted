@@ -9,17 +9,18 @@ PostgreSQL + JPA 기반으로 데이터 구조와 인증 아키텍처를 재설�
 
 ---
 ## 진행중인 작업
-2026-04-15~ 게시글 상세화면 수정 및 삭제 화면단 개발 및 API연동
+- 2026-05-05~ ApprovalBoardWrite 수정 모드(mode: 'edit') 공통화 작업 및 삭제 기능 API 연동
 
 ## 완료한 작업
-2026-04-11 로그인 승인 요청 게시판 화면단 개발완료  
-2026-04-12 REST API 호출방식으로 변경(/frm)  
-2026-04-13 로그인 승인 요청 게시판 새 글 작성 화면단 개발완료  
-2026-04-14 새 글 작성 시 userId localStorage 연동 (접근권한신청/로그인 성공 시 저장, 로그아웃 후에도 게시판 글 작성 가능하도록 유지)  
-2026-04-15 게시글 작성일자 날짜 포맷 처리 (백엔드 LocalDateTime → 문자열 변환, formatDate 함수 구현)  
-2026-04-14 ~ 2026-04-15 로그인 승인 요청 게시판 게시글 조회 API 연동 완료  
-2026-04-21 승인 요청 게시판(ApprovalBoard) 신청상태 로직 수정 및
+- 2026-05-05 ApprovalBoardDetail API 연동 완료 (GET /posts/{postNo} path variable 방식)
+- 2026-04-21 승인 요청 게시판(ApprovalBoard) 신청상태 로직 수정 및
            ApprovalBoardDetail(상세화면): UI 완성
+- 2026-04-14 ~ 2026-04-15 로그인 승인 요청 게시판 게시글 조회 API 연동 완료
+- 2026-04-15 게시글 작성일자 날짜 포맷 처리 (백엔드 LocalDateTime → 문자열 변환, formatDate 함수 구현)
+- 2026-04-14 새 글 작성 시 userId localStorage 연동 (접근권한신청/로그인 성공 시 저장, 로그아웃 후에도 게시판 글 작성 가능하도록 유지)
+- 2026-04-13 로그인 승인 요청 게시판 새 글 작성 화면단 개발완료
+- 2026-04-12 REST API 호출방식으로 변경(/frm)
+- 2026-04-11 로그인 승인 요청 게시판 화면단 개발완료
 
 ## 예정 작업
 로그인 성공이력, 실패이력, 승인처리 및 실패처리등을 포함한 관리자화면 개발 예정
@@ -60,7 +61,8 @@ src/
 │   │   └── LoggingDashboard.tsx  # 로깅 대시보드
 │   └── board/            # 게시판
 │       ├── ApprovalBoard.tsx       # 로그인 승인 요청 게시판
-│       └── ApprovalBoardWrite.tsx  # 로그인 승인 요청 작성
+│       ├── ApprovalBoardWrite.tsx  # 로그인 승인 요청 작성
+|       └── ApprovalBoardDetail.tsx  # 로그인 승인 게시판 상세화면
 ├── types/            # TypeScript 타입 정의
 └── utils/            # 유틸리티 함수
 ```
@@ -78,6 +80,7 @@ src/
 | `/dashboard/LoggingDashboard` | 로깅 대시보드 |
 | `/board/ApprovalBoard` | 로그인 승인 요청 게시판|
 | `/board/ApprovalBoardWrite` | 로그인 승인 요청 게시판에서의 새 글 작성 |
+| `/board/ApprovalBoardDetail` | 로그인 승인 요청 게시판 상세화면 |
 
 ---
 

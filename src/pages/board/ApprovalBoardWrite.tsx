@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { axiosBoard, axiosJoinAccess } from '../../utils/axiosInstance';
 import { BoardWriteReq, BoardWriteRes } from './common/Board';
@@ -14,6 +14,11 @@ type FormErrors = {
 
 const ApprovalBoardWrite: React.FC = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+
+    //상세페이지 글에서 수정버튼 눌렀을때 넘어오는 값
+    const state = location.state as { postNo: number, mode: string } | null;
+
 
     const [fnList, setFnList] = useState<FnInfo<FnList>>({ FnInfo: []});
 
